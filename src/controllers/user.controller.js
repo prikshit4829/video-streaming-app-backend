@@ -154,8 +154,8 @@ const logoutUser = asyncHandler(async(req,res)=>{
     await User.findByIdAndUpdate(
         req.user._id,
         {
-            $set:{
-                refereshToken:undefined
+            $unset:{
+                refereshToken:1  // this remove the field from document
             }
         },
         {
